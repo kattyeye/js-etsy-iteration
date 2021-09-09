@@ -7,6 +7,13 @@ function findAvgPrice(items) {
   return (sum / items.length).toFixed(2);
 }
 console.log(`The average price is`, `$` + findAvgPrice(items)); //log the average price
+//average price function using reduce
+let initial = 0;
+let avg = items.reduce(function(previousValue, currentValue) {
+    return previousValue + currentValue.price / items.length;
+}, initial);
+console.log(`The average price is`, `$` + avg.toFixed(2));
+
 
 let arr = []; //leaving blank array to make a new one
 const itemList = items;
@@ -42,14 +49,9 @@ eightOrMore.forEach(function (el) {
   console.log(`${el.title}${el.materials}`);
 });
 
-
 let el = [];
-const sellerMade = items.filter(function(el) {
-    return el.who_made === "i_did";
-}); 
+const sellerMade = items.filter(function (el) {
+  return el.who_made === "i_did";
+});
 
 console.log(sellerMade, `were made by their sellers.`);
-
-// sellerMade.forEach(function(el){
-//     console.log(`${el.title}`)
-// })
